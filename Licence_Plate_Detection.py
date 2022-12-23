@@ -6,7 +6,7 @@ import cv2
 import imutils
 import pytesseract
 from configparser import ConfigParser
-import easyocr
+# import easyocr
 import os
 import numpy as np
 import re

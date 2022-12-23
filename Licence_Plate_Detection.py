@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
-import glob
-import matplotlib.pyplot as plt
+# import glob
+# import matplotlib.pyplot as plt
 import cv2
 import imutils
 import pytesseract

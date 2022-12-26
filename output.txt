@@ -1,9 +1,0 @@
-
- 1 Number_plate : “HR26D05551   state:  Haryana
- 2 Number_plate : KA 144A 1478   state:  Karnataka
- 3 Number_plate : MH12DE1433   state:  Maharashtra
- 4 Number_plate : DL4CAF4943   state:  Delhi
- 5 Number_plate : MH12DE1433   state:  Maharashtra
- 6 Number_plate : TN 37 CF wn 4902   state:  Tamil Nadu
- 7 Number_plate : KL 25H5672   state:  Kerala
- 8 Number_plate : KAIS” 0 1316   state:  Karnataka

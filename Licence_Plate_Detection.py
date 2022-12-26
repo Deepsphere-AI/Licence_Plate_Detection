@@ -1,4 +1,3 @@
-# pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\ds_007\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe'
 
 import streamlit as st
 from PIL import Image
@@ -9,11 +8,6 @@ import easyocr
 import numpy as np
 import re
 import pandas as pd
-
-
-# C:\Users\ds_007\anaconda3\envs\env_easyocr
-#activate env_easyocr
-#streamlit run Licence_Plate_Detection.py
 
 def main():
 	st.set_page_config(layout="wide")
@@ -384,7 +378,7 @@ def main():
 			      output_file.write(f"\n{value} Number plate: {string}  state: {state}\n")
 			    value += 1
 			output_file.close()
-		elif select3 == 'Easy-Ocr' and type(Easy_HP)==int and len(features):
+		elif select3 == 'Easy-Ocr' and type(Easy_HP)==int and len(features)==2:
 				output_file = open("output.txt",'w')
 				reader = easyocr.Reader(['en'])
 				value = 1

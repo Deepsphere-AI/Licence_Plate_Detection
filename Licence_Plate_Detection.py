@@ -378,7 +378,7 @@ def main():
 			      output_file.write(f"\n{value} Number plate: {string}  state: {state}\n")
 			    value += 1
 			output_file.close()
-		elif select3 == 'Easy-Ocr' and type(Easy_HP)==int and len(features)==2:
+		elif select3 == 'Easy-Ocr' and type(Easy_HP)==float and len(features)==2:
 				output_file = open("output.txt",'w')
 				reader = easyocr.Reader(['en'])
 				value = 1

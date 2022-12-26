@@ -1,15 +1,19 @@
+# pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\ds_007\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe'
+
 import streamlit as st
 from PIL import Image
-# import glob
-# import matplotlib.pyplot as plt
 import cv2
 import imutils
 import pytesseract
-from configparser import ConfigParser
-# import easyocr
-import os
+import easyocr
 import numpy as np
 import re
+import pandas as pd
+
+
+# C:\Users\ds_007\anaconda3\envs\env_easyocr
+#activate env_easyocr
+#streamlit run Licence_Plate_Detection.py
 
 def main():
 	st.set_page_config(layout="wide")
@@ -17,10 +21,19 @@ def main():
 	global select3
 	global select4
 	global file_uploaded
+	output_file = open("output.txt",'w')
 	global slect5
 	global all_imgs
 	global dict_file
-	output_file = open("output.txt",'w')
+	global features
+	global Tesseract_HP
+	global Easy_HP
+	global Display_PSM 
+
+	Display_PSM = None
+	Easy_HP = None
+	Tesseract_HP = None
+	features = []
 	all_imgs = []
 	file_uploaded = None
 	select2 = None 
@@ -73,7 +86,7 @@ def main():
 
 	st_list1 = ['classify the number plate']
 	
-	c21,c22,c23,c24,c25 = st.columns(((3,5,1,1,1)))
+	c21,c22,c23,c24,c25 = st.columns((3,5,1,1,1))
 	with c21:
 		if select1 in st_list1:
 			st.write("")
@@ -92,7 +105,7 @@ def main():
 
 
 	st_list2 = ['Classfication']
-	c31, c32, c33 ,c34,c35= st.columns(((3,5,1,1,1)))
+	c31, c32, c33 ,c34,c35= st.columns((3,5,1,1,1))
 	with c31:
 		if select2 in st_list2:
 			st.write("")
@@ -110,7 +123,7 @@ def main():
 		st.markdown("")
 
 	st_list3 = ['Tesseract-Ocr','Easy-Ocr']
-	c41,c42,c43,c44,c45 = st.columns(((3,5,1,1,1)))
+	c41,c42,c43,c44,c45 = st.columns((3,5,1,1,1))
 	with c41:
 		if select3 in st_list3:
 			st.write("")
@@ -150,7 +163,7 @@ def main():
 			with cd5:
 				st.image(all_imgs[i+4])
 				break
-	c51,c52,c53,c54,c55 = st.columns(((3,5,1,1,1)))
+	c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
 	with c51:
 		if file_uploaded is not None:
 			st.write("")
@@ -159,7 +172,11 @@ def main():
 			st.markdown("##### **Feature Engineering**")
 	with c52:
 		if file_uploaded is not None:
-			st.multiselect('Image Features',["Licence Number",'State'])
+			features = st.multiselect("Image Features",["Licence Number","State"])
+		# if len(features) == 2:
+		# 	st.markdown(features[0],features[1])
+		# else:
+		# 	st.markdown("Select the two features")
 	with c53:
 		st.markdown("")
 	with c54:
@@ -167,7 +184,7 @@ def main():
 	with c55:
 		st.markdown("")
 
-	c51,c52,c53,c54,c55 = st.columns(((3,5,1,1,1)))
+	c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
 	with c51:
 		if file_uploaded is not None:
 			st.write("")
@@ -175,14 +192,46 @@ def main():
 			st.write("")
 			st.markdown("##### **Hyper Parameter Tunning**")
 	with c52:
-		if file_uploaded is not None:
-			st.selectbox('HperParameters',["HyperParameter1","HyperParameter2"])
+		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
+			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value:Best is 6",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
+		elif file_uploaded is not None and select3 == 'Easy-Ocr':
+			Easy_HP = st.selectbox("HperParameters: Select Confidence_Threshold",["How Confidence should be the model with predicted text :: 0.1 is 10 percent",0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
+
 	with c53:
 		st.markdown("")
+
 	with c54:
 		st.markdown("")
+		st.write("")
+		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
+			Display_PSM = st.button("PSM")
 	with c55:
 		st.markdown("")
+
+	CPS1,CPS2,CPS3 = st.columns((4,8,2))
+	with CPS1:
+		st.markdown("")
+	with CPS2:
+		st.markdown("")
+		if Display_PSM == True:
+			page_segementation_codes = {"Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+											"Segementation_Method":["Orientation and script detection (OSD) only.",
+											"Automatic page segmentation with OSD.",
+											"Automatic page segmentation, but no OSD, or OCR. (not implemented)",
+											"Fully automatic page segmentation, but no OSD. (Default)",
+											"Assume a single column of text of variable sizes.",
+											"Assume a single uniform block of vertically aligned text.",
+											"Assume a single uniform block of text.",
+											"Treat the image as a single text line.",
+											"Treat the image as a single word.",
+											"Treat the image as a single word in a circle.",
+											"Treat the image as a single character.",
+											"Sparse text. Find as much text as possible in no particular order.",
+											"Sparse text with OSD.",
+											"Raw line. Treat the image as a single text line"]}
+			DF = pd.DataFrame(page_segementation_codes)
+			DF.set_index("Value",inplace=True)
+			st.dataframe(DF,width=800, height=500)
 
 	c61,c62,c63,c64,c65 = st.columns(((3,3,10,3,3)))
 	with c61:
@@ -205,8 +254,7 @@ def main():
 		st.markdown("")
 	with c65:
 		st.markdown("")
-	if select5 is True:
-
+	if select5 is True and len(features) ==2 :
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 
 		                    'AP': 'Andhra Pradesh', 
 		                    'AR': 'Arunachal Pradesh', 
@@ -243,8 +291,9 @@ def main():
 		                    'UP': 'Uttar Pradesh', 
 		                    'UT': 'Uttarakhand', 
 		                    'WB': 'West Bengal'}
-		if select3=='Tesseract-Ocr':
+		if select3=='Tesseract-Ocr' and type(Tesseract_HP) == int and len(features)==2:
 			value = 1
+			output_file = open("output.txt",'w')
 			for input_image in all_imgs:
 			    # Resizing the image
 			    Resized_image = imutils.resize(input_image, width=300 )
@@ -289,15 +338,15 @@ def main():
 			    if flag == True:
 
 			      Cropped_loc = './image.png'
-			      plate = pytesseract.image_to_string(Cropped_loc, lang='eng',config ='--oem 3 --psm 6')
+			      plate = pytesseract.image_to_string(Cropped_loc, lang='eng',config =f'--oem 3 --psm {Tesseract_HP}')
 			    else:
 
 			      Cropped_loc = './image.png'
-			      plate = pytesseract.image_to_string(Cropped_loc, lang='eng',config ='--oem 3 --psm 6')
+			      plate = pytesseract.image_to_string(Cropped_loc, lang='eng',config = f'--oem 3 --psm {Tesseract_HP}')
 			    # Remove unwated characters from the text
 			    filteredText = re.sub('[^A-Z0-9.]+', ' ',plate)
 			    if filteredText == " " or len(filteredText)<5:
-			      plate = pytesseract.image_to_string(filtred_image, lang='eng',config ='--oem 3 --psm 6')
+			      plate = pytesseract.image_to_string(filtred_image, lang='eng',config = f'--oem 3 --psm {Tesseract_HP}')
 			      plate_text = re.sub('[^A-Z0-9.]+', ' ',plate)
 			      string = plate.replace(" ","")
 			      string_list = string[:2]
@@ -334,13 +383,62 @@ def main():
 			      
 			      output_file.write(f"\n{value} Number plate: {string}  state: {state}\n")
 			    value += 1
-		elif select3 == 'Easy-Ocr':
-			st.markdown("Not yet included")
+			output_file.close()
+		elif select3 == 'Easy-Ocr' and type(Easy_HP)==int and len(features):
+				output_file = open("output.txt",'w')
+				reader = easyocr.Reader(['en'])
+				value = 1
+				india = ['IND','INDIA']
+				for input_image in all_imgs:
+					ocr_results = reader.readtext(input_image)
+					confidence_threshold = Easy_HP
+					for detection in ocr_results:
+						if detection[2] > confidence_threshold and detection[1] not in india:
+							detected = detection[1].upper()
+							text_detection = re.sub('[^A-Z0-9.]+', ' ',detected)
+							text = text_detection.replace(" ","")
+							state_text = text[:2]
+							if state_text == 'HH':
+								state_text = 'MH'
+							elif state_text == 'HB':
+								state_text = 'WB'
+							elif state_text == 'PV':
+								state_text = 'PY'
+							elif state_text == '6J':
+								state_text = 'GJ'
+							elif state_text == 'IN':
+								state_text = 'TN'
 
-
-		# st.write(dict_file.keys())
+							state_list = ['AN', 'AP', 'AR', 'AS', 'BR', 'CH', 'CT', 'DN', 'DD', 'DL', 'GA', 'GJ', 'HR', 'HP', 'JK', 'JH', 'KA', 'KL', 'LD', 'MP', 'MH', 'MN', 'ML', 'MZ', 'NL', 'OR', 'PY', 'PB', 'RJ', 'SK', 'TN', 'TG', 'TR','TS', 'UP', 'UT', 'WB']        
+							try:
+								if state_text in  state_list:
+									state = state_dictionary[state_text]
+									output_file.write(f"\n{value} Number Plate:    {text}      state:  {state}\n")
+									value += 1
+									break
+								else:
+									state = "UNKNOWN"
+									output_file.write(f"\n{value} Number Plate: {text}        state:  {state}\n")
+									value += 1
+									break
+							except Exception as e:
+								pass
+				output_file.close()
+	else:
+		if select3 !=None:
+			CE1,CE2,CE3 = st.columns((3,8,2))
+			with CE1:
+				st.markdown("")
+			with CE2:
+				st.markdown("")
+				if select5 is True and len(features) !=2:
+					st.markdown("#### Select the other feature in Image Features")
+				if select5 is True and (type(Tesseract_HP)!= int or type(Easy_HP)!=int):
+					st.markdown("####  Select HyperParameter value")
+			with CE3:
+				st.markdown("")
 	output_file.close()
-	
+	output_file = open('output.txt','r')
 	c61,c62,c63 = st.columns((7,3,5))
 	with c61:
 		st.markdown("")
@@ -348,7 +446,6 @@ def main():
 		if file_uploaded is not None:
 			st.markdown("")
 			st.markdown("")
-			output_file = open('output.txt','r')
 			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
 	with c63:
 		st.markdown("")

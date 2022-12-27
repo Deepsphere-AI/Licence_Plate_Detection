@@ -67,15 +67,15 @@ def main():
 	st.markdown("<p style='text-align: center; color: black; font-size:22px;font-family:IBM Plex Sans;'><span style='font-weight: bold'>Problem Statement: </span>Develop a Machine Learning Application for vehicle number plate Classfication</p>", unsafe_allow_html=True)
 	st.markdown("______________________________________________________________________________________________________________________________________________")
 	
-	c11,c12,c13,c14,c15 = st.columns((3,5,1,1,1))
-	with c11:
+	c11,c12,c13,c14,c15 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c12:
 		#st.write("")
 		st.write("")
 		st.write("")
 		st.subheader("Problem Statement")
-	with c12:
-		select1 = st.selectbox("",['Select the problem Statement','classify the number plate'],key = "key1")
 	with c13:
+		select1 = st.selectbox("",['Select the problem Statement','classify the number plate'],key = "key1")
+	with c11:
 		st.write("")
 	with c14:
 		st.write("")
@@ -84,51 +84,51 @@ def main():
 
 	st_list1 = ['classify the number plate']
 	
-	c21,c22,c23,c24,c25 = st.columns((3,5,1,1,1))
-	with c21:
+	#c21,c22,c23,c24,c25 = st.columns((3,5,1,1,1))
+	with c12:
 		if select1 in st_list1:
 			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Problem type")
-	with c22:
+	with c13:
 		if select1 in st_list1:
 			select2 = st.selectbox("",['Select the problem type','Classfication',])
-	with c23:
+	with c11:
 		st.write("")
-	with c24:
+	with c14:
 		st.write("")
-	with c25:
+	with c15:
 		st.write("")
 
 
 	st_list2 = ['Classfication']
-	c31, c32, c33 ,c34,c35= st.columns((3,5,1,1,1))
-	with c31:
+	#c31, c32, c33 ,c34,c35= st.columns((3,5,1,1,1))
+	with c12:
 		if select2 in st_list2:
 			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Model Selection")
-	with c32:
+	with c13:
 		if select2 in st_list2:
 			select3 = st.selectbox("",['Select the Model','Tesseract-Ocr','Easy-Ocr'])
-	with c33:
+	with c11:
 		st.write("")
-	with c34:
+	with c14:
 		st.write("")
-	with c35:
+	with c15:
 		st.write("")
 
 	st_list3 = ['Tesseract-Ocr','Easy-Ocr']
-	c41,c42,c43,c44,c45 = st.columns((3,5,1,1,1))
-	with c41:
+	#c41,c42,c43,c44,c45 = st.columns((3,5,1,1,1))
+	with c12:
 		if select3 in st_list3:
 			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Upload File")
-	with c42:
+	with c13:
 		if select3 in st_list3:
 			file_uploaded = st.file_uploader("Choose a image file", type=["jpg",'jfif','JPEG','JPEG2000','PNG','PBM','PGM','PPM','TIFF','BMP','GIF','WEBP'],accept_multiple_files=True)
 			if file_uploaded is not None:
@@ -136,15 +136,15 @@ def main():
 				    # Convert the file to an opencv image.
 				    file_bytes = np.asarray(bytearray(file.read()), dtype=np.uint8)
 				    all_imgs.append(cv2.imdecode(file_bytes, 1))
-	with c43:
+	with c11:
 		st.write("")
-	with c44:
+	with c15:
 		if select3 in st_list3:
 			st.write("")
 			st.write("")
 			st.write("")
 			select4 = st.button('Preview')
-	with c45:
+	with c14:
 		st.write("")
 	if select4 is True:
 		cd1,cd2,cd3,cd4,cd5 = st.columns((2,2,2,2,2))
@@ -161,49 +161,49 @@ def main():
 			with cd5:
 				st.image(all_imgs[i+4])
 				break
-	c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
-	with c51:
+	#c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
+	with c12:
 		if file_uploaded is not None:
 			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Feature Engineering")
-	with c52:
+	with c13:
 		if file_uploaded is not None:
 			features = st.multiselect("Image Features",["Licence Number","State"])
 		# if len(features) == 2:
 		# 	st.markdown(features[0],features[1])
 		# else:
 		# 	st.markdown("Select the two features")
-	with c53:
+	with c11:
 		st.write("")
-	with c54:
+	with c14:
 		st.write("")
-	with c55:
+	with c15:
 		st.write("")
 
-	c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
-	with c51:
+	#c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
+	with c12:
 		if file_uploaded is not None:
 			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Hyper Parameter Tunning")
-	with c52:
+	with c13:
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
 			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value:Best is 6",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
 		elif file_uploaded is not None and select3 == 'Easy-Ocr':
 			Easy_HP = st.selectbox("HperParameters: Select Confidence_Threshold",["How Confidence should be the model with predicted text :: 0.1 is 10 percent",0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
 
-	with c53:
+	with c11:
 		st.write("")
 
-	with c54:
+	with c15:
 		st.write("")
 		st.write("")
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
 			Display_PSM = st.button("PSM")
-	with c55:
+	with c14:
 		st.write("")
 
 	CPS1,CPS2,CPS3 = st.columns((4,8,2))

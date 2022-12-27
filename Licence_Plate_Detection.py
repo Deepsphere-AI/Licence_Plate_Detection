@@ -53,7 +53,7 @@ def main():
 	with col1:
 		st.write("")
 	with col2:
-		st.writes("")
+		st.write("")
 	with col3:
 		img = Image.open("Deepsphere_image.png")
 		st.image(img,use_column_width=True)

@@ -71,7 +71,7 @@ def main():
 		# st.write("")
 		st.write("")
 		st.write("")
-		st.subheader("Problem Statement")
+		st.markdown("### **Problem Statement**")
 	with c13:
 		select1 = st.selectbox("",['Select the problem Statement','classify the number plate'],key = "key1")
 	with c11:
@@ -89,7 +89,7 @@ def main():
 			# st.write("")
 			st.write("")
 			st.write("")
-			st.subheader("Problem type")
+			st.markdown("### **Problem type**")
 	with c13:
 		if select1 in st_list1:
 			select2 = st.selectbox("",['Select the problem type','Classfication',])
@@ -108,7 +108,7 @@ def main():
 			# st.write("")
 			st.write("")
 			st.write("")
-			st.subheader("Model Selection")
+			st.markdown("### **Model Selection**")
 	with c13:
 		if select2 in st_list2:
 			select3 = st.selectbox("",['Select the Model','Tesseract-Ocr','Easy-Ocr'])
@@ -126,7 +126,7 @@ def main():
 			# st.write("")
 			st.write("")
 			st.write("")
-			st.subheader("Upload File")
+			st.markdown("### **Upload File**")
 	with c13:
 		if select3 in st_list3:
 			file_uploaded = st.file_uploader("Choose a image file", type=["jpg",'jfif','JPEG','JPEG2000','PNG','PBM','PGM','PPM','TIFF','BMP','GIF','WEBP'],accept_multiple_files=True)
@@ -160,49 +160,50 @@ def main():
 			with cd5:
 				st.image(all_imgs[i+4])
 				break
-	# c51,c52,c53,c54,c55 = st.columns([0.25,1.5,2.75,0.25,1.75])
-	with c12:
+	c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c22:
 		if file_uploaded is not None:
-			# st.write("")
 			st.write("")
 			st.write("")
-			st.subheader("Feature Engineering")
-	with c13:
+			st.write("")
+			st.markdown("### **Feature Engineering**")
+	with c23:
 		if file_uploaded is not None:
+			st.write("")
 			features = st.multiselect("Image Features",["Licence Number","State"])
 		# if len(features) == 2:
 		# 	st.markdown(features[0],features[1])
 		# else:
 		# 	st.markdown("Select the two features")
-	with c11:
+	with c21:
 		st.write("")
-	with c14:
+	with c24:
 		st.write("")
-	with c15:
+	with c25:
 		st.write("")
 
 	# c51,c52,c53,c54,c55 = st.columns([0.25,1.5,2.75,0.25,1.75])
-	with c12:
+	with c22:
 		if file_uploaded is not None:
+			st.write("")
+			st.write("")
 			# st.write("")
-			st.write("")
-			st.write("")
-			st.subheader("Hyper Parameter Tunning")
-	with c13:
+			st.markdown("### **Hyper Parameter Tunning**")
+	with c23:
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
 			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value:Best is 6",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
 		elif file_uploaded is not None and select3 == 'Easy-Ocr':
 			Easy_HP = st.selectbox("HperParameters: Select Confidence_Threshold",["How Confidence should be the model with predicted text :: 0.1 is 10 percent",0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
 
-	with c11:
+	with c21:
 		st.write("")
 
-	with c15:
+	with c25:
 		st.write("")
 		st.write("")
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
 			Display_PSM = st.button("PSM")
-	with c14:
+	with c24:
 		st.write("")
 
 	CPS1,CPS2,CPS3 = st.columns((4,8,2))
@@ -228,18 +229,16 @@ def main():
 											"Raw line. Treat the image as a single text line"]}
 			DF = pd.DataFrame(page_segementation_codes)
 			DF.set_index("Value",inplace=True)
-			st.dataframe(DF,width=800, height=500)
+			st.dataframe(DF,width=700, height=500)
 
-	c61,c62,c63,c64,c65 = st.columns(((3,3,10,3,3)))
-	with c61:
+	c31,c32,c33,c34,c35 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c32:
 		if file_uploaded is not None:
-			# st.write("")
 			st.write("")
 			st.write("")
-			st.subheader("Model Engineering")
-	with c62:
-		st.write("")
-	with c63:
+			st.write("")
+			st.markdown("### **Model Engineering**")
+	with c33:
 		if file_uploaded is not None:
 			st.write("")
 			st.write("")
@@ -247,9 +246,11 @@ def main():
 			select5 = st.button("Execute the Model")
 			if select5 != None:
 				st.write(select5)
-	with c64:
+	with c31:
 		st.write("")
-	with c65:
+	with c34:
+		st.write("")
+	with c35:
 		st.write("")
 	if select5 is True and len(features) ==2 :
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 

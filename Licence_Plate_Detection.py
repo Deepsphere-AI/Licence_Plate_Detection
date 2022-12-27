@@ -42,10 +42,9 @@ def main():
 	def Reset_fun():
 		pass
 		st.session_state['key1']="Select the problem Statement"
-		st.session_state['key2']="Home"
-		st.session_state['key3']="Library Used"
-		st.session_state['key4']="Model Implemented"
-		# st.session_state['key5']="GCP"
+		st.session_state['key2']="Library Used"
+		st.session_state['key3']="Model Implemented"
+		
 
 
 
@@ -450,10 +449,10 @@ def main():
 		st.write("")
 	output_file.close()
 
-	st.sidebar.selectbox('Menu',["Home",'Display Images','Execute the Model','Download Model Outcome'],key='key2')
-	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Imutils','Tesseract-Ocr','Easy-Ocr'],key='key3')
-	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key4')
-	# st.sidebar.selectbox("",['GCP','VM Instance','Computer Engine','Cloud Storage'],key='key5')
+	
+	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Imutils','Tesseract-Ocr','Easy-Ocr'],key='key2')
+	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key3')
+	
 	c51,c52,c53 = st.sidebar.columns((1,1,1))
 	with c51:
 		pass

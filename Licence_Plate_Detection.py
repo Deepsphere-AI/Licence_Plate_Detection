@@ -49,13 +49,17 @@ def main():
 
 
 
-	col1, col2, col3 = st.columns([3,8,2])
+	col1, col2, col3,col4,col5 = st.columns((2,2,7,2,2))
 	with col1:
 		st.write("")
 	with col2:
-		img = Image.open("Deepsphere_image.png")
-		st.image(img,width=900)
+		st.writes("")
 	with col3:
+		img = Image.open("Deepsphere_image.png")
+		st.image(img,use_column_width=True)
+	with col4:
+		st.write("")
+	with col5:
 		st.write("")
 
 	st.markdown("<h1 style='text-align: center; color: Black;font-size: 29px;font-family:IBM Plex Sans;'>Learn to Build Industry Standard Data Science Applications</h1>", unsafe_allow_html=True)

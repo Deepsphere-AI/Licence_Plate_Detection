@@ -445,9 +445,9 @@ def main():
 		st.markdown("")
 	output_file.close()
 
-	st.sidebar.selectbox('Menu',["Home",'Model Validation','Download Model Outcome','Data Visualization','Deploy the Model'],key='key2')
-	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Ipython.display','sklearn.linear_model'],key='key3')
-	st.sidebar.selectbox("",['Model Implemented','Decision Tree','Random Forest','Logistic Regression'],key='key4')
+	st.sidebar.selectbox('Menu',["Home",'Display Images','Execute the Model','Download Model Outcome'],key='key2')
+	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','imutils'],key='key3')
+	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key4')
 	st.sidebar.selectbox("",['GCP','VM Instance','Computer Engine','Cloud Storage'],key='key5')
 	c51,c52,c53 = st.sidebar.columns((1,1,1))
 	with c51:

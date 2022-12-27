@@ -1,3 +1,4 @@
+
 import streamlit as st
 from PIL import Image
 import cv2
@@ -44,7 +45,7 @@ def main():
 		st.session_state['key2']="Home"
 		st.session_state['key3']="Library Used"
 		st.session_state['key4']="Model Implemented"
-		st.session_state['key5']="GCP"
+		# st.session_state['key5']="GCP"
 
 
 
@@ -73,7 +74,7 @@ def main():
 		st.write("")
 		st.markdown("### **Problem Statement**")
 	with c13:
-		select1 = st.selectbox("",['Select the problem Statement','classify the number plate'],key = "key1")
+		select1 = st.selectbox("",['Select the problem Statement','Number Plate Classification'],key = "key1")
 	with c11:
 		st.write("")
 	with c14:
@@ -81,7 +82,7 @@ def main():
 	with c15:
 		st.write("")
 
-	st_list1 = ['classify the number plate']
+	st_list1 = ['Number Plate Classification']
 	
 	# c11,c12,c13,c14,c15 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
@@ -92,7 +93,7 @@ def main():
 			st.markdown("### **Problem type**")
 	with c13:
 		if select1 in st_list1:
-			select2 = st.selectbox("",['Select the problem type','Classfication',])
+			select2 = st.selectbox("",['Select the problem type','Classification',])
 	with c11:
 		st.write("")
 	with c14:
@@ -101,7 +102,7 @@ def main():
 		st.write("")
 
 
-	st_list2 = ['Classfication']
+	st_list2 = ['Classification']
 	# c11,c12,c13,c14,c15= st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if select2 in st_list2:
@@ -129,7 +130,7 @@ def main():
 			st.markdown("### **Upload File**")
 	with c13:
 		if select3 in st_list3:
-			file_uploaded = st.file_uploader("Choose a image file", type=["jpg",'jfif','JPEG','JPEG2000','PNG','PBM','PGM','PPM','TIFF','BMP','GIF','WEBP'],accept_multiple_files=True)
+			file_uploaded = st.file_uploader("Choose a image file", type=["JPG",'JFIF','JPEG','PNG','TIFF',],accept_multiple_files=True)
 			if file_uploaded is not None:
 				for file in file_uploaded:
 				    # Convert the file to an opencv image.
@@ -171,10 +172,6 @@ def main():
 		if file_uploaded is not None:
 			st.write("")
 			features = st.multiselect("Image Features",["Licence Number","State"])
-		# if len(features) == 2:
-		# 	st.markdown(features[0],features[1])
-		# else:
-		# 	st.markdown("Select the two features")
 	with c21:
 		st.write("")
 	with c24:
@@ -191,7 +188,7 @@ def main():
 			st.markdown("### **Hyper Parameter Tunning**")
 	with c23:
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
-			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value:Best is 6",0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
+			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value:Best is 6", 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
 		elif file_uploaded is not None and select3 == 'Easy-Ocr':
 			Easy_HP = st.selectbox("HperParameters: Select Confidence_Threshold",["How Confidence should be the model with predicted text :: 0.1 is 10 percent",0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
 
@@ -244,14 +241,13 @@ def main():
 			st.write("")
 			st.write("")
 			select5 = st.button("Execute the Model")
-				
 	with c31:
 		st.write("")
 	with c34:
 		st.write("")
 	with c35:
 		st.write("")
-	if select5 is True and len(features) ==2 :
+	if select5 is True:
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 
 		                    'AP': 'Andhra Pradesh', 
 		                    'AR': 'Arunachal Pradesh', 
@@ -289,7 +285,6 @@ def main():
 		                    'UT': 'Uttarakhand', 
 		                    'WB': 'West Bengal'}
 		if select3=='Tesseract-Ocr' and type(Tesseract_HP) == int and len(features)==2:
-			Tesseract_HP = 6
 			value = 1
 			output_file = open("output.txt",'w')
 			for input_image in all_imgs:
@@ -406,7 +401,6 @@ def main():
 								state_text = 'GJ'
 							elif state_text == 'IN':
 								state_text = 'TN'
-
 							state_list = ['AN', 'AP', 'AR', 'AS', 'BR', 'CH', 'CT', 'DN', 'DD', 'DL', 'GA', 'GJ', 'HR', 'HP', 'JK', 'JH', 'KA', 'KL', 'LD', 'MP', 'MH', 'MN', 'ML', 'MZ', 'NL', 'OR', 'PY', 'PB', 'RJ', 'SK', 'TN', 'TG', 'TR','TS', 'UP', 'UT', 'WB']        
 							try:
 								if state_text in  state_list:
@@ -422,37 +416,44 @@ def main():
 							except Exception as e:
 								pass
 				output_file.close()
-	else:
-		if select3 !=None:
-			CE1,CE2,CE3 = st.columns((3,8,2))
-			with CE1:
-				st.write("")
-			with CE2:
-				st.write("")
-				if select5 is True and len(features) !=2:
-					st.write("#### Select the other feature in Image Features")
-				if select5 is True and (type(Tesseract_HP)!= int or type(Easy_HP)!=int):
-					st.write("####  Select HyperParameter value")
-			with CE3:
-				st.write("")
-	output_file.close()
+		else:
+			if select3 !=None:
+				CE1,CE2,CE3 = st.columns((6,7,2))
+				with CE1:
+					st.write("")
+				with CE2:
+					st.write("")
+					if select5 is True and len(features) !=2:
+						st.write("#### Select the other feature in Image Features")
+					if select5 is True and  select3 == 'Tesseract-Ocr' and type(Tesseract_HP)!= int :
+						st.write("####  Select HyperParameter value")
+					if select5 is True and select3 == 'Easy-Ocr'and (type(Easy_HP)!=float):
+						st.write("#### Select HyperParameter value")
+				with CE3:
+					st.write("")
+
 	output_file = open('output.txt','r')
-	c61,c62,c63 = st.columns((7,3,5))
+	c61,c62,c63,c64 = st.columns([4,3,3,5])
 	with c61:
 		st.write("")
 	with c62:
+		st.write("")
+		st.write("")
+		if len(output_file.readline()) != 0 and select5 == True:
+			st.markdown("#### **Model Executed Successfully**")
+	with c63:
 		if file_uploaded is not None:
 			st.write("")
 			st.write("")
 			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
-	with c63:
+	with c64:
 		st.write("")
 	output_file.close()
 
 	st.sidebar.selectbox('Menu',["Home",'Display Images','Execute the Model','Download Model Outcome'],key='key2')
-	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','imutils','Tesseract-Ocr','Easy-Ocr'],key='key3')
-	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocrn'],key='key4')
-	st.sidebar.selectbox("",['GCP','VM Instance','Computer Engine','Cloud Storage'],key='key5')
+	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Imutils','Tesseract-Ocr','Easy-Ocr'],key='key3')
+	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key4')
+	# st.sidebar.selectbox("",['GCP','VM Instance','Computer Engine','Cloud Storage'],key='key5')
 	c51,c52,c53 = st.sidebar.columns((1,1,1))
 	with c51:
 		pass

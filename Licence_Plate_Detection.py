@@ -244,8 +244,7 @@ def main():
 			st.write("")
 			st.write("")
 			select5 = st.button("Execute the Model")
-			if select5 != None:
-				st.write(select5)
+				
 	with c31:
 		st.write("")
 	with c34:

@@ -69,7 +69,7 @@ def main():
 	
 	c11,c12,c13,c14,c15 = st.columns((3,5,1,1,1))
 	with c11:
-		st.write("")
+		#st.write("")
 		st.write("")
 		st.write("")
 		st.subheader("Problem Statement")
@@ -87,7 +87,7 @@ def main():
 	c21,c22,c23,c24,c25 = st.columns((3,5,1,1,1))
 	with c21:
 		if select1 in st_list1:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Problem type")
@@ -106,7 +106,7 @@ def main():
 	c31, c32, c33 ,c34,c35= st.columns((3,5,1,1,1))
 	with c31:
 		if select2 in st_list2:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Model Selection")
@@ -124,7 +124,7 @@ def main():
 	c41,c42,c43,c44,c45 = st.columns((3,5,1,1,1))
 	with c41:
 		if select3 in st_list3:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Upload File")
@@ -164,7 +164,7 @@ def main():
 	c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
 	with c51:
 		if file_uploaded is not None:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Feature Engineering")
@@ -185,7 +185,7 @@ def main():
 	c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
 	with c51:
 		if file_uploaded is not None:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Hyper Parameter Tunning")
@@ -234,7 +234,7 @@ def main():
 	c61,c62,c63,c64,c65 = st.columns(((3,3,10,3,3)))
 	with c61:
 		if file_uploaded is not None:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Model Engineering")

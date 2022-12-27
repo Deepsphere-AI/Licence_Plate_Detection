@@ -1,4 +1,3 @@
-
 import streamlit as st
 from PIL import Image
 import cv2
@@ -69,7 +68,7 @@ def main():
 	
 	c11,c12,c13,c14,c15 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
-		#st.write("")
+		# st.write("")
 		st.write("")
 		st.write("")
 		st.subheader("Problem Statement")
@@ -84,10 +83,10 @@ def main():
 
 	st_list1 = ['classify the number plate']
 	
-	#c21,c22,c23,c24,c25 = st.columns((3,5,1,1,1))
+	# c11,c12,c13,c14,c15 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if select1 in st_list1:
-			#st.write("")
+			# st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Problem type")
@@ -103,10 +102,10 @@ def main():
 
 
 	st_list2 = ['Classfication']
-	#c31, c32, c33 ,c34,c35= st.columns((3,5,1,1,1))
+	# c11,c12,c13,c14,c15= st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if select2 in st_list2:
-			#st.write("")
+			# st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Model Selection")
@@ -121,10 +120,10 @@ def main():
 		st.write("")
 
 	st_list3 = ['Tesseract-Ocr','Easy-Ocr']
-	#c41,c42,c43,c44,c45 = st.columns((3,5,1,1,1))
+	c11,c12,c13,c14,c15 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if select3 in st_list3:
-			#st.write("")
+			# st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Upload File")
@@ -161,10 +160,10 @@ def main():
 			with cd5:
 				st.image(all_imgs[i+4])
 				break
-	#c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
+	# c51,c52,c53,c54,c55 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if file_uploaded is not None:
-			#st.write("")
+			# st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Feature Engineering")
@@ -182,10 +181,10 @@ def main():
 	with c15:
 		st.write("")
 
-	#c51,c52,c53,c54,c55 = st.columns((3,5,1,1,1))
+	# c51,c52,c53,c54,c55 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if file_uploaded is not None:
-			#st.write("")
+			# st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Hyper Parameter Tunning")
@@ -234,7 +233,7 @@ def main():
 	c61,c62,c63,c64,c65 = st.columns(((3,3,10,3,3)))
 	with c61:
 		if file_uploaded is not None:
-			#st.write("")
+			# st.write("")
 			st.write("")
 			st.write("")
 			st.subheader("Model Engineering")
@@ -386,10 +385,10 @@ def main():
 				output_file = open("output.txt",'w')
 				reader = easyocr.Reader(['en'])
 				value = 1
+				confidence_threshold = Easy_HP
 				india = ['IND','INDIA']
 				for input_image in all_imgs:
 					ocr_results = reader.readtext(input_image)
-					confidence_threshold = Easy_HP
 					for detection in ocr_results:
 						if detection[2] > confidence_threshold and detection[1] not in india:
 							detected = detection[1].upper()
@@ -430,9 +429,9 @@ def main():
 			with CE2:
 				st.write("")
 				if select5 is True and len(features) !=2:
-					st.markdown("#### Select the other feature in Image Features")
+					st.write("#### Select the other feature in Image Features")
 				if select5 is True and (type(Tesseract_HP)!= int or type(Easy_HP)!=int):
-					st.markdown("####  Select HyperParameter value")
+					st.write("####  Select HyperParameter value")
 			with CE3:
 				st.write("")
 	output_file.close()
@@ -450,8 +449,8 @@ def main():
 	output_file.close()
 
 	st.sidebar.selectbox('Menu',["Home",'Display Images','Execute the Model','Download Model Outcome'],key='key2')
-	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','imutils'],key='key3')
-	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key4')
+	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','imutils','Tesseract-Ocr','Easy-Ocr'],key='key3')
+	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocrn'],key='key4')
 	st.sidebar.selectbox("",['GCP','VM Instance','Computer Engine','Cloud Storage'],key='key5')
 	c51,c52,c53 = st.sidebar.columns((1,1,1))
 	with c51:

@@ -290,6 +290,7 @@ def main():
 		                    'UT': 'Uttarakhand', 
 		                    'WB': 'West Bengal'}
 		if select3=='Tesseract-Ocr' and type(Tesseract_HP) == int and len(features)==2:
+			Tesseract_HP = 6
 			value = 1
 			output_file = open("output.txt",'w')
 			for input_image in all_imgs:

@@ -454,7 +454,7 @@ def main():
 				output_file.close()
 		else:
 			if select3 !=None:
-				CE1,CE2,CE3 = st.columns((4,7,5))
+				CE1,CE2,CE3 = st.columns((5,7,5))
 				with CE1:
 					st.write("")
 				with CE2:

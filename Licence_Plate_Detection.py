@@ -143,6 +143,9 @@ def main():
 			st.write("")
 			st.write("")
 			st.write("")
+			st.write("")
+			st.write("")
+			st.write("")
 			select4 = st.button('Preview')
 
 	if select4 is True:
@@ -463,7 +466,7 @@ def main():
 		if len(output_file.readline()) != 0 and select5 == True:
 			st.markdown("#### **Model Executed Successfully**")
 	with c63:
-		if file_uploaded is not None:
+		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')

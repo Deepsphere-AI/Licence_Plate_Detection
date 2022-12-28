@@ -220,7 +220,7 @@ def main():
 		if len(file_uploaded)>=1 and select3 == 'Tesseract-Ocr':
 			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value ", 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
 		elif len(file_uploaded)>=1 and select3 == 'Easy-Ocr':
-			Easy_HP = st.selectbox("HperParameters: Select Confidence_Threshold",["How Confidence should be the model with predicted text :: 0.1 is 10 percent",0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
+			Easy_HP = st.selectbox("HperParameters: Select Confidence_Threshold",["How Confidence should be the model with predicted text :: 0.1 is 10 percent",0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])
 
 	with c21:
 		st.write("")

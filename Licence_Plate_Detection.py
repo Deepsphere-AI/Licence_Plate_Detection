@@ -469,17 +469,21 @@ def main():
 					st.write("")
 
 	output_file = open('output.txt','r')
-	c61,c62,c63 = st.columns([4,8,4])
-	with c61:
+	
+	with c31:
 		st.write("")
-	with c62:
+	with c32:
+		st.write("")
+	with c33:
 		st.write("")
 		st.write("")
 		if len(output_file.readline()) != 0 and select5 == True:
 			st.success("Model Executed Successfully")
-	with c63:
+	with c34:
 		st.write("")
-		
+	with c35:
+		st.write("")
+	c61,c62,c63,c64 = st.columns([4,3,3,5])
 	with c61:
 		st.write("")
 	with c62:
@@ -488,6 +492,8 @@ def main():
 			st.write("")
 			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
 	with c63:
+		st.write("")
+	with c64:
 		st.write("")
 		
 	output_file.close()

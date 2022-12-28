@@ -28,7 +28,7 @@ def main():
 	Tesseract_HP = None
 	features = []
 	all_imgs = []
-	file_uploaded = None
+	file_uploaded = 0
 	select2 = None 
 	select3 = None
 	select4 = None
@@ -176,14 +176,14 @@ def main():
 				
 	#c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c22:
-		if file_uploaded is not None:
+		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Feature Engineering**")
 	with c23:
-		if file_uploaded is not None:
+		if len(file_uploaded)>=1:
 			st.write("")
 			features = st.multiselect("Image Features",["Licence Number","State"])
 	with c21:
@@ -195,15 +195,15 @@ def main():
 
 	# c51,c52,c53,c54,c55 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c22:
-		if file_uploaded is not None:
+		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Hyper Parameter Tunning**")
 	with c23:
-		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
+		if len(file_uploaded)>=1 and select3 == 'Tesseract-Ocr':
 			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value:Best is 6", 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
-		elif file_uploaded is not None and select3 == 'Easy-Ocr':
+		elif len(file_uploaded)>=1 and select3 == 'Easy-Ocr':
 			Easy_HP = st.selectbox("HperParameters: Select Confidence_Threshold",["How Confidence should be the model with predicted text :: 0.1 is 10 percent",0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
 
 	with c21:
@@ -219,7 +219,7 @@ def main():
 		st.write("")
 		st.write("")
 		st.write("")
-		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
+		if len(file_uploaded)>=1 and select3 == 'Tesseract-Ocr':
 			Display_PSM = st.button("PSM")
 	with c24:
 		st.write("")
@@ -251,13 +251,13 @@ def main():
 
 	c31,c32,c33,c34,c35 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c32:
-		if file_uploaded is not None:
+		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Model Engineering**")
 	with c33:
-		if file_uploaded is not None:
+		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			st.write("")

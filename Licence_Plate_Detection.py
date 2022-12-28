@@ -454,7 +454,7 @@ def main():
 				output_file.close()
 		else:
 			if select3 !=None:
-				CE1,CE2,CE3 = st.columns((6,7,2))
+				CE1,CE2,CE3 = st.columns((4,7,4))
 				with CE1:
 					st.write("")
 				with CE2:
@@ -469,7 +469,7 @@ def main():
 					st.write("")
 
 	output_file = open('output.txt','r')
-	c61,c62,c63,c64 = st.columns([4,3,3,5])
+	c61,c62,c63 = st.columns([4,5,4])
 	with c61:
 		st.write("")
 	with c62:
@@ -478,12 +478,20 @@ def main():
 		if len(output_file.readline()) != 0 and select5 == True:
 			st.success("Model Executed Successfully")
 	with c63:
-		if len(file_uploaded)>=1:
-			st.write("")
-			st.write("")
-			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
+		st.write("")
 	with c64:
 		st.write("")
+		
+	with c61:
+		st.write("")
+	with c62:
+		if len(file_uploaded)>=1:
+		st.write("")
+		st.write("")
+		select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
+	with c63:
+		st.write("")
+		
 	output_file.close()
 
 	

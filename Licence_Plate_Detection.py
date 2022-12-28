@@ -86,7 +86,7 @@ def main():
 	# c11,c12,c13,c14,c15 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if select1 in st_list1:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Problem type**")
@@ -105,7 +105,7 @@ def main():
 	# c11,c12,c13,c14,c15= st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if select2 in st_list2:
-			st.write("")
+			#st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Model Selection**")
@@ -167,6 +167,7 @@ def main():
 			st.write("")
 			st.write("")
 			st.write("")
+			st.write("")
 			st.markdown("#### **Feature Engineering**")
 	with c23:
 		if file_uploaded is not None:
@@ -184,7 +185,7 @@ def main():
 		if file_uploaded is not None:
 			st.write("")
 			st.write("")
-			# st.write("")
+			st.write("")
 			st.markdown("#### **Hyper Parameter Tunning**")
 	with c23:
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':

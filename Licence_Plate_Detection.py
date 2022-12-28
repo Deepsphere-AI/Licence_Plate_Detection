@@ -105,7 +105,7 @@ def main():
 	# c11,c12,c13,c14,c15= st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c12:
 		if select2 in st_list2:
-			#st.write("")
+			st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Model Selection**")

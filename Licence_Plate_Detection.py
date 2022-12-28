@@ -479,8 +479,6 @@ def main():
 			st.success("Model Executed Successfully")
 	with c63:
 		st.write("")
-	with c64:
-		st.write("")
 		
 	with c61:
 		st.write("")

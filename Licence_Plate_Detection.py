@@ -487,7 +487,7 @@ def main():
 	output_file.close()
 
 	
-	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Imutils','Tesseract-Ocr','Easy-Ocr'],key='key2')
+	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Tesseract-Ocr','Easy-Ocr'],key='key2')
 	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key3')
 	
 	c51,c52,c53 = st.sidebar.columns((1,1,1))

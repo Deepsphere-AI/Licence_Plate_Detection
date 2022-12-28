@@ -203,6 +203,9 @@ def main():
 		st.write("")
 		st.write("")
 		st.write("")
+		st.write("")
+		st.write("")
+		st.write("")
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
 			Display_PSM = st.button("PSM")
 	with c24:

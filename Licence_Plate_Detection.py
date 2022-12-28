@@ -178,15 +178,15 @@ def main():
 					break
 		else:
 			# CE1,CE2,CE3 = st.columns((6,7,2))
-			with c21:
+			with c11:
 				st.write("")
-			with c22:
+			with c12:
 				st.write("")
-			with c23:
+			with c13:
 				st.write("#### Upload atleast 5 Images")
-			with c24:
+			with c14:
 				st.write("")
-			with c25:
+			with c15:
 				st.write("")
 				
 	c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])

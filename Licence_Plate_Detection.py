@@ -71,7 +71,7 @@ def main():
 		# st.write("")
 		st.write("")
 		st.write("")
-		st.markdown("### **Problem Statement**")
+		st.markdown("#### **Problem Statement**")
 	with c13:
 		select1 = st.selectbox("",['Select the problem Statement','Number Plate Classification'],key = "key1")
 	with c11:
@@ -89,7 +89,7 @@ def main():
 			# st.write("")
 			st.write("")
 			st.write("")
-			st.markdown("### **Problem type**")
+			st.markdown("#### **Problem type**")
 	with c13:
 		if select1 in st_list1:
 			select2 = st.selectbox("",['Select the problem type','Classification',])
@@ -108,7 +108,7 @@ def main():
 			# st.write("")
 			st.write("")
 			st.write("")
-			st.markdown("### **Model Selection**")
+			st.markdown("#### **Model Selection**")
 	with c13:
 		if select2 in st_list2:
 			select3 = st.selectbox("",['Select the Model','Tesseract-Ocr','Easy-Ocr'])
@@ -123,10 +123,10 @@ def main():
 	cg1,cg2,cg3,cg4,cg5 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with cg2:
 		if select3 in st_list3:
-			# st.write("")
 			st.write("")
 			st.write("")
-			st.markdown("### **Upload File**")
+			st.write("")
+			st.markdown("#### **Upload File**")
 	with cg3:
 		if select3 in st_list3:
 			file_uploaded = st.file_uploader("Choose a image file", type=["JPG",'JFIF','JPEG','PNG','TIFF',],accept_multiple_files=True)
@@ -167,7 +167,7 @@ def main():
 			st.write("")
 			st.write("")
 			st.write("")
-			st.markdown("### **Feature Engineering**")
+			st.markdown("#### **Feature Engineering**")
 	with c23:
 		if file_uploaded is not None:
 			st.write("")
@@ -185,7 +185,7 @@ def main():
 			st.write("")
 			st.write("")
 			# st.write("")
-			st.markdown("### **Hyper Parameter Tunning**")
+			st.markdown("#### **Hyper Parameter Tunning**")
 	with c23:
 		if file_uploaded is not None and select3 == 'Tesseract-Ocr':
 			Tesseract_HP = st.selectbox("Page segmentation modes(PSM)",["Select the value:Best is 6", 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])

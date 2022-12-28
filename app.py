@@ -89,10 +89,10 @@ def main():
 			#st.write("")
 			st.write("")
 			st.write("")
-			st.markdown("#### **Problem type**")
+			st.markdown("#### **Problem Type**")
 	with c13:
 		if select1 in st_list1:
-			select2 = st.selectbox("",['Select the problem type','Classification',])
+			select2 = st.selectbox("",['Select the Problem Type','Classification',])
 	with c11:
 		st.write("")
 	with c14:
@@ -511,7 +511,7 @@ def main():
 	with c51:
 		pass
 	with c52:
-		st.sidebar.button("clear/Reset",on_click=Reset_fun)
+		st.sidebar.button("Clear/Reset",on_click=Reset_fun)
 	with c53:
 		pass
 

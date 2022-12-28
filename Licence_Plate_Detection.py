@@ -454,10 +454,10 @@ def main():
 				output_file.close()
 		else:
 			if select3 !=None:
-				CE1,CE2,CE3 = st.columns((5,7,5))
-				with CE1:
+				#CE1,CE2,CE3 = st.columns((5,7,5))
+				with C31:
 					st.write("")
-				with CE2:
+				with C33:
 					st.write("")
 					if select5 is True and len(features) !=2:
 						st.error("Select the feature in Image Features")
@@ -465,7 +465,11 @@ def main():
 						st.error("Select HyperParameter value")
 					if select5 is True and select3 == 'Easy-Ocr'and (type(Easy_HP)!=float):
 						st.error("Select HyperParameter value")
-				with CE3:
+				with C32:
+					st.write("")
+				with c34:
+					st.write("")
+				with c35:
 					st.write("")
 
 	output_file = open('output.txt','r')

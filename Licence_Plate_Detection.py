@@ -486,9 +486,9 @@ def main():
 		st.write("")
 	with c62:
 		if len(file_uploaded)>=1:
-		st.write("")
-		st.write("")
-		select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
+			st.write("")
+			st.write("")
+			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
 	with c63:
 		st.write("")
 		

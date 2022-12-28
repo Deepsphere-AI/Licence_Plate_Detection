@@ -460,7 +460,7 @@ def main():
 				with CE2:
 					st.write("")
 					if select5 is True and len(features) !=2:
-						st.write("#### Select the other feature in Image Features")
+						st.write("#### Select the feature in Image Features")
 					if select5 is True and  select3 == 'Tesseract-Ocr' and type(Tesseract_HP)!= int :
 						st.write("####  Select HyperParameter value")
 					if select5 is True and select3 == 'Easy-Ocr'and (type(Easy_HP)!=float):

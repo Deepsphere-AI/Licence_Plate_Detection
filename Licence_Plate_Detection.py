@@ -183,7 +183,7 @@ def main():
 			with c12:
 				st.write("")
 			with c13:
-				st.write("#### Upload atleast 5 Images")
+				st.error("Upload atleast 5 Images")
 			with c14:
 				st.write("")
 			with c15:

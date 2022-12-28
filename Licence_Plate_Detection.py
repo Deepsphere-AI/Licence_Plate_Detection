@@ -454,7 +454,7 @@ def main():
 				output_file.close()
 		else:
 			if select3 !=None:
-				CE1,CE2,CE3 = st.columns((4,7,4))
+				CE1,CE2,CE3 = st.columns((4,7,5))
 				with CE1:
 					st.write("")
 				with CE2:
@@ -487,12 +487,12 @@ def main():
 	with c61:
 		st.write("")
 	with c62:
-		if len(file_uploaded)>=1:
-			st.write("")
-			st.write("")
-			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
-	with c63:
 		st.write("")
+	with c63:
+		if len(file_uploaded)>=1:
+		st.write("")
+		st.write("")
+		select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
 	with c64:
 		st.write("")
 		

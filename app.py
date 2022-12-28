@@ -162,7 +162,7 @@ def main():
 
 	if select4 is True:
 		cd1,cd2,cd3,cd4,cd5 = st.columns((2,2,2,2,2))
-		if len(all_imgs) >5:
+		if len(all_imgs) >=5:
 			Display_Images= all_imgs[0:5]
 			for i in range(len(Display_Images)):
 				with cd1:

@@ -469,7 +469,7 @@ def main():
 					st.write("")
 
 	output_file = open('output.txt','r')
-	c61,c62,c63 = st.columns([4,5,4])
+	c61,c62,c63 = st.columns([4,8,4])
 	with c61:
 		st.write("")
 	with c62:

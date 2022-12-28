@@ -10,8 +10,8 @@ div.css-6qob1r.e1fqkh3o3 {
     top: 2px;
     background-color: rgb(240, 242, 246);
     z-index: 999991;
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 350px;
+    max-width: 350px;
     transform: none;
     transition: transform 300ms ease 0s, min-width 300ms ease 0s, max-width 300ms ease 0s;
 }

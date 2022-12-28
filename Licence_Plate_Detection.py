@@ -28,7 +28,7 @@ def main():
 	Tesseract_HP = None
 	features = []
 	all_imgs = []
-	file_uploaded = 0
+	file_uploaded = []
 	select2 = None 
 	select3 = None
 	select4 = None

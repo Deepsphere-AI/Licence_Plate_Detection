@@ -460,11 +460,11 @@ def main():
 				with CE2:
 					st.write("")
 					if select5 is True and len(features) !=2:
-						st.write("#### Select the feature in Image Features")
+						st.error("Select the feature in Image Features")
 					if select5 is True and  select3 == 'Tesseract-Ocr' and type(Tesseract_HP)!= int :
-						st.write("####  Select HyperParameter value")
+						st.error("Select HyperParameter value")
 					if select5 is True and select3 == 'Easy-Ocr'and (type(Easy_HP)!=float):
-						st.write("#### Select HyperParameter value")
+						st.error("Select HyperParameter value")
 				with CE3:
 					st.write("")
 
@@ -476,7 +476,7 @@ def main():
 		st.write("")
 		st.write("")
 		if len(output_file.readline()) != 0 and select5 == True:
-			st.markdown("#### **Model Executed Successfully**")
+			st.success("Model Executed Successfully")
 	with c63:
 		if len(file_uploaded)>=1:
 			st.write("")

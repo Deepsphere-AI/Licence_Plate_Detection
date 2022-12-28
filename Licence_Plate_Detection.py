@@ -147,20 +147,34 @@ def main():
 
 	if select4 is True:
 		cd1,cd2,cd3,cd4,cd5 = st.columns((2,2,2,2,2))
-		Display_Images= all_imgs[0:5]
-		for i in range(len(Display_Images)):
-			with cd1:
-				st.image(all_imgs[i])
-			with cd2:
-				st.image(all_imgs[i+1])
-			with cd3:
-				st.image(all_imgs[i+2])
-			with cd4:
-				st.image(all_imgs[i+3])
-			with cd5:
-				st.image(all_imgs[i+4])
-				break
-	#c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
+		if len(all_imgs) >5:
+			Display_Images= all_imgs[0:5]
+			for i in range(len(Display_Images)):
+				with cd1:
+					st.image(all_imgs[i])
+				with cd2:
+					st.image(all_imgs[i+1])
+				with cd3:
+					st.image(all_imgs[i+2])
+				with cd4:
+					st.image(all_imgs[i+3])
+				with cd5:
+					st.image(all_imgs[i+4])
+					break
+		else:
+			# CE1,CE2,CE3 = st.columns((6,7,2))
+			with c21:
+				st.write("")
+			with c22:
+				st.write("")
+			with c23:
+				st.write("#### Upload atleast 5 Images")
+			with c24:
+				st.write("")
+			with c25:
+				st.write("")
+				
+	c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c22:
 		if file_uploaded is not None:
 			st.write("")

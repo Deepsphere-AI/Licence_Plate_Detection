@@ -174,7 +174,7 @@ def main():
 			with c25:
 				st.write("")
 				
-	c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	#c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c22:
 		if file_uploaded is not None:
 			st.write("")

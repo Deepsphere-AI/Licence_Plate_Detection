@@ -213,7 +213,7 @@ def main():
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
-			st.write("")
+			#st.write("")
 			st.markdown("#### **Hyper Parameter Tunning**")
 	with c23:
 		if len(file_uploaded)>=1 and select3 == 'Tesseract-Ocr':
@@ -233,7 +233,7 @@ def main():
 		st.write("")
 		st.write("")
 		st.write("")
-		st.write("")
+		#st.write("")
 		if len(file_uploaded)>=1 and select3 == 'Tesseract-Ocr':
 			Display_PSM = st.button("PSM")
 	with c24:
@@ -264,24 +264,24 @@ def main():
 			DF.set_index("Value",inplace=True)
 			st.dataframe(DF,width=700, height=500)
 
-	c31,c32,c33,c34,c35 = st.columns([0.25,1.5,2.75,0.25,1.75])
-	with c32:
+	#c31,c32,c33,c34,c35 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c22:
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Model Engineering**")
-	with c33:
+	with c23:
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			st.write("")
 			select5 = st.button("Execute the Model")
-	with c31:
+	with c21:
 		st.write("")
-	with c34:
+	with c24:
 		st.write("")
-	with c35:
+	with c25:
 		st.write("")
 	if select5 is True:
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 

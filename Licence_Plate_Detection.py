@@ -264,24 +264,24 @@ def main():
 			DF.set_index("Value",inplace=True)
 			st.dataframe(DF,width=700, height=500)
 
-	#c31,c32,c33,c34,c35 = st.columns([0.25,1.5,2.75,0.25,1.75])
-	with c22:
+	c31,c32,c33,c34,c35 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c32:
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			#st.write("")
 			st.markdown("#### **Model Engineering**")
-	with c23:
+	with c33:
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			st.write("")
 			select5 = st.button("Execute the Model")
-	with c21:
+	with c31:
 		st.write("")
-	with c24:
+	with c34:
 		st.write("")
-	with c25:
+	with c35:
 		st.write("")
 	if select5 is True:
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 

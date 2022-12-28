@@ -455,9 +455,9 @@ def main():
 		else:
 			if select3 !=None:
 				#CE1,CE2,CE3 = st.columns((5,7,5))
-				with C31:
+				with c31:
 					st.write("")
-				with C33:
+				with c33:
 					st.write("")
 					if select5 is True and len(features) !=2:
 						st.error("Select the feature in Image Features")
@@ -465,7 +465,7 @@ def main():
 						st.error("Select HyperParameter value")
 					if select5 is True and select3 == 'Easy-Ocr'and (type(Easy_HP)!=float):
 						st.error("Select HyperParameter value")
-				with C32:
+				with c32:
 					st.write("")
 				with c34:
 					st.write("")

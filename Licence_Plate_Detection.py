@@ -180,7 +180,7 @@ def main():
 			st.write("")
 			st.write("")
 			st.write("")
-			st.write("")
+			#st.write("")
 			st.markdown("#### **Feature Engineering**")
 	with c23:
 		if len(file_uploaded)>=1:

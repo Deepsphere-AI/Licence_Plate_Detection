@@ -120,14 +120,14 @@ def main():
 		st.write("")
 
 	st_list3 = ['Tesseract-Ocr','Easy-Ocr']
-	cg1,cg2,cg3,cg4,cg5 = st.columns([0.25,1.5,2.75,0.25,1.75])
-	with cg2:
+	c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c22:
 		if select3 in st_list3:
 			st.write("")
 			st.write("")
 			st.write("")
 			st.markdown("#### **Upload File**")
-	with cg3:
+	with c23:
 		if select3 in st_list3:
 			file_uploaded = st.file_uploader("Choose a image file", type=["JPG",'JFIF','JPEG','PNG','TIFF',],accept_multiple_files=True)
 			if file_uploaded is not None:
@@ -135,11 +135,11 @@ def main():
 				    # Convert the file to an opencv image.
 				    file_bytes = np.asarray(bytearray(file.read()), dtype=np.uint8)
 				    all_imgs.append(cv2.imdecode(file_bytes, 1))
-	with cg1:
+	with c21:
 		st.write("")
-	with cg4:
+	with c24:
 		st.write("")
-	with cg5:
+	with c25:
 		if select3 in st_list3:
 			st.write("")
 			st.write("")
@@ -161,7 +161,7 @@ def main():
 			with cd5:
 				st.image(all_imgs[i+4])
 				break
-	c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	#c21,c22,c23,c24,c25 = st.columns([0.25,1.5,2.75,0.25,1.75])
 	with c22:
 		if file_uploaded is not None:
 			st.write("")

@@ -62,7 +62,7 @@ def main():
 
 	st.markdown("<h1 style='text-align: center; color: Black;font-size: 29px;font-family:IBM Plex Sans;'>Learn to Build Industry Standard Data Science Applications</h1>", unsafe_allow_html=True)
 	st.markdown("<p style='text-align: center; color: Blue;font-size: 29px;font-family:IBM Plex Sans;'>MLOPS Built On Google Cloud and Streamlit</p>", unsafe_allow_html=True)
-	st.markdown("<p style='text-align: center; color: black; font-size:22px;font-family:IBM Plex Sans;'><span style='font-weight: bold'>Problem Statement: </span>Classify Vehicle License Plates  by State</p>", unsafe_allow_html=True)
+	st.markdown("<p style='text-align: center; color: black; font-size:25px;font-family:IBM Plex Sans;'><span style='font-weight: bold'>Problem Statement: </span>Classify Vehicle License Plates  by State</p>", unsafe_allow_html=True)
 	st.markdown("""<hr style="width:100%;height:2px;background-color:gray;border-width:10">""", unsafe_allow_html=True)
 	
 	c11,c12,c13,c14,c15 = st.columns([0.25,1.5,2.75,0.25,1.75])

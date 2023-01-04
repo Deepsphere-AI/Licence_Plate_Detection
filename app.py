@@ -499,7 +499,7 @@ def main():
 			st.write("")
 			st.write("")
 			#st.write("")
-			select5 = st.button("Preview the Model Outcome")
+			select5 = st.button("Preview Model Outcome")
 	with c31:
 		st.write("")
 	with c34:

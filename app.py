@@ -498,7 +498,7 @@ def main():
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
-			st.write("")
+			#st.write("")
 			select5 = st.button("Preview the Model Outcome")
 	with c31:
 		st.write("")

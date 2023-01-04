@@ -125,7 +125,7 @@ def main():
 			st.write("")
 			st.write("")
 			st.write("")
-			st.markdown("#### **Upload File**")
+			st.markdown("#### **Upload Input Data**")
 	with c13:
 		if select3 in st_list3:
 			file_uploaded = st.file_uploader("Choose a image file", type=["JPG",'JFIF','JPEG','PNG','TIFF',],accept_multiple_files=True)
@@ -276,7 +276,7 @@ def main():
 			st.write("")
 			st.write("")
 			st.write("")
-			select5 = st.button("Execute the Model")
+			select5 = st.button("Classify Licence Plates")
 	with c31:
 		st.write("")
 	with c34:
@@ -483,6 +483,25 @@ def main():
 		st.write("")
 		if len(output_file.readline()) != 0 and select5 == True:
 			st.success("Model Executed Successfully")
+	with c34:
+		st.write("")
+	with c35:
+		st.write("")
+		
+	with c32:
+		if len(file_uploaded)>=1:
+			st.write("")
+			st.write("")
+			st.write("")
+			st.markdown("#### **Model Outcome**")
+	with c33:
+		if len(file_uploaded)>=1:
+			st.write("")
+			st.write("")
+			st.write("")
+			select5 = st.button("Preview the Model Outcome")
+	with c31:
+		st.write("")
 	with c34:
 		st.write("")
 	with c35:

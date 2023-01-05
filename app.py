@@ -288,6 +288,9 @@ def main():
 		st.write("")
 	with c35:
 		st.write("")
+		
+	output_file = open("output.txt",'w')
+	sec_file = open("out_file.txt",'w')
 	if select5  is True:
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 
 		                    'AP': 'Andhra Pradesh', 
@@ -327,8 +330,6 @@ def main():
 		                    'WB': 'West Bengal'}
 		if select3=='Tesseract-Ocr' and type(Tesseract_HP) == int and len(features)==2:
 			value = 1
-			output_file = open("output.txt",'w')
-			sec_file = open("out_file.txt",'w')
 			for input_image in all_imgs:
 			    # Resizing the image
 			    Resized_image = imutils.resize(input_image, width=300 )
@@ -421,12 +422,12 @@ def main():
 			      sec_file.write(f"\nNumber plate:{string.strip()},state:{state.strip()}\n")
 
 			    value += 1
-			output_file.close()
-			sec_file.close()
+			#output_file.close()
+			#sec_file.close()
 
 		elif select3 == 'Easy-Ocr' and type(Easy_HP)==float and len(features)==2:
-				output_file = open("output.txt",'w')
-				sec_file = open('out_file.txt','w')
+				#output_file = open("output.txt",'w')
+				#sec_file = open('out_file.txt','w')
 				reader = easyocr.Reader(['en'])
 				value = 1
 				confidence_threshold = Easy_HP
@@ -467,8 +468,8 @@ def main():
 									break
 							except Exception as e:
 								pass
-				output_file.close()
-				sec_file.close()
+				#output_file.close()
+				#sec_file.close()
 		else:
 			if select3 !=None:
 				#CE1,CE2,CE3 = st.columns((5,7,5))
@@ -488,102 +489,104 @@ def main():
 					st.write("")
 				with c35:
 					st.write("")
-	if len(file_uploaded)>1:
-		output_file = open('output.txt','r')
+	
+	output_file.close()
+	sec_file.close()
+	output_file = open('output.txt','r')
 
-		with c31:
-			st.write("")
-		with c32:
-			st.write("")
-		with c33:
-			st.write("")
-			st.write("")
-			if len(output_file.readlines()) != 0 and select5  == True:
-				st.success("Model Executed Successfully")
+	with c31:
+		st.write("")
+	with c32:
+		st.write("")
+	with c33:
+		st.write("")
+		st.write("")
+		if len(output_file.readlines()) != 0 and select5  == True:
+			st.success("Model Executed Successfully")
 
-		output_file.close()
+	output_file.close()
 
-		c41,c42,c43,c44,c45 = st.columns([0.25,1.5,2.75,0.25,1.75])
-		with c42:
-			if len(file_uploaded)>=1:
-				st.write("")
-				st.write("")
-				st.markdown("#### **Model Outcome**")
-		with c43:
-			if len(file_uploaded)>=1:
-				st.write("")
-				st.write("")
-				#st.write("")
-				select_preview = st.button("Preview Model Outcome")
-		with c41:
+	c41,c42,c43,c44,c45 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c42:
+		if len(file_uploaded)>=1:
 			st.write("")
-		with c44:
 			st.write("")
-		with c45:
+			st.markdown("#### **Model Outcome**")
+	with c43:
+		if len(file_uploaded)>=1:
 			st.write("")
+			st.write("")
+			#st.write("")
+			select_preview = st.button("Preview Model Outcome")
+	with c41:
+		st.write("")
+	with c44:
+		st.write("")
+	with c45:
+		st.write("")
 
-		sec_file = open('out_file.txt','r')
-		# co1,co2,co3 = st.columns((4,6,4))
-		with c41:
-			st.write("")
-		with c42:
-			st.write("")
-		with c43:
-			st.write("")
-			if len(file_uploaded)>1 and len(sec_file.readlines())!=0:
-				dataframe1 = pd.read_csv("out_file.txt")
-				dataframe1.to_csv('file.csv',index=None)
-			df = pd.read_csv('file.csv')
-			if df.shape[0]!=0:
-				length = df.shape[0]
-			if select_preview == True:
-				df = pd.read_csv('file.csv',names=["Licence  Number","State"])
-				st.table(df)
-		with c44:
-			st.write("")
-		with c45:
-			st.write("")
-		sec_file.close()
-
-
-
-		output_file = open('output.txt','r')
-		c61,c62,c63,c64 = st.columns([4,3,3,5])
-		with c61:
-			st.write("")
-		with c62:
-			st.write("")
-		with c63:
-			if len(file_uploaded)>1 and output_file.readlines() is  not None:
-				output_file = open("output.txt",'r')
-				extra_file = open("extra.txt",'w')
-				extra_file.write(output_file.read())
-				extra_file.close()
-				output_file.close()
+	sec_file = open('out_file.txt','r')
+	# co1,co2,co3 = st.columns((4,6,4))
+	with c41:
+		st.write("")
+	with c42:
+		st.write("")
+	with c43:
+		st.write("")
+		if len(file_uploaded)>1 and len(sec_file.readlines())!=0:
+			dataframe1 = pd.read_csv("out_file.txt")
+			dataframe1.to_csv('file.csv',index=None)
+		df = pd.read_csv('file.csv')
+		if df.shape[0]!=0:
+			length = df.shape[0]
+		if select_preview == True:
+			df = pd.read_csv('file.csv',names=["Licence  Number","State"])
+			st.table(df)
+	with c44:
+		st.write("")
+	with c45:
+		st.write("")
+	sec_file.close()
 
 
-			extra_file = open('extra.txt','r')
-			if len(file_uploaded)>=1 and length >1:
-				st.write("")
-				st.write("")
-				select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
+
+	output_file = open('output.txt','r')
+	c61,c62,c63,c64 = st.columns([4,3,3,5])
+	with c61:
+		st.write("")
+	with c62:
+		st.write("")
+	with c63:
+		if len(file_uploaded)>1 and output_file.readlines() is  not None:
+			output_file = open("output.txt",'r')
+			extra_file = open("extra.txt",'w')
+			extra_file.write(output_file.read())
 			extra_file.close()
-		with c64:
+			output_file.close()
+
+
+		extra_file = open('extra.txt','r')
+		if len(file_uploaded)>=1 and length >1:
 			st.write("")
+			st.write("")
+			select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
+		extra_file.close()
+	with c64:
+		st.write("")
 
-		output_file.close()
+	output_file.close()
 
-	
-	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Tesseract-Ocr','Easy-Ocr'],key='key2')
-	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key3')
-	
-	c51,c52,c53 = st.sidebar.columns((1,1,1))
-	with c51:
-		pass
-	with c52:
-		st.sidebar.button("Clear/Reset",on_click=Reset_fun)
-	with c53:
-		pass
+
+st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Tesseract-Ocr','Easy-Ocr'],key='key2')
+st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key3')
+
+c51,c52,c53 = st.sidebar.columns((1,1,1))
+with c51:
+	pass
+with c52:
+	st.sidebar.button("Clear/Reset",on_click=Reset_fun)
+with c53:
+	pass
 
 
 

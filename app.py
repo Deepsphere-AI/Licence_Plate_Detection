@@ -560,7 +560,7 @@ def main():
 			extra_file.write(output_file.read())
 			extra_file.close()
 			output_file.close()	
-		if len(file_uploaded)>=1 and select == True:
+		if len(file_uploaded)>=1 and select5 == True:
 			extra_file = open('extra.txt','r')
 			st.write("")
 			st.write("")

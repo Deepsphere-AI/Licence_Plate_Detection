@@ -15,7 +15,8 @@ def main():
 	global select3
 	global select4
 	global file_uploaded
-	global slect5
+	global select5
+	global select6
 	global all_imgs
 	global dict_file
 	global features
@@ -39,6 +40,7 @@ def main():
 	select3 = None
 	select4 = None
 	select5  = None
+	select6 = None
 
 	with open('style.css') as f:
 		st.markdown (f"<style>{f.read()}</style>",unsafe_allow_html=True)
@@ -560,7 +562,7 @@ def main():
 			extra_file.write(output_file.read())
 			extra_file.close()
 			output_file.close()	
-		if len(file_uploaded)>=1 and (select5 == True or select_preview == True):
+		if len(file_uploaded)>=1 and (select5 == True or select_preview == True or select6==True):
 			extra_file = open('extra.txt','r')
 			st.write("")
 			st.write("")

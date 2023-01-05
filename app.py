@@ -574,16 +574,16 @@ def main():
 	output_file.close()
 
 
-st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Tesseract-Ocr','Easy-Ocr'],key='key2')
-st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key3')
+	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Tesseract-Ocr','Easy-Ocr'],key='key2')
+	st.sidebar.selectbox("",['Model Implemented','Tesseract-Ocr','Easy-Ocr'],key='key3')
 
-c51,c52,c53 = st.sidebar.columns((1,1,1))
-with c51:
-	pass
-with c52:
-	st.sidebar.button("Clear/Reset",on_click=Reset_fun)
-with c53:
-	pass
+	c51,c52,c53 = st.sidebar.columns((1,1,1))
+	with c51:
+		pass
+	with c52:
+		st.sidebar.button("Clear/Reset",on_click=Reset_fun)
+	with c53:
+		pass
 
 
 

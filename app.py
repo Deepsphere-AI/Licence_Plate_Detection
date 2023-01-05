@@ -581,7 +581,7 @@ c51,c52,c53 = st.sidebar.columns((1,1,1))
 with c51:
 	pass
 with c52:
-	st.sidebar.button("Clear/Reset",on_click=Reset_fun())
+	st.sidebar.button("Clear/Reset",on_click=Reset_fun)
 with c53:
 	pass
 

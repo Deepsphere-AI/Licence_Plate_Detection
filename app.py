@@ -288,8 +288,6 @@ def main():
 		st.write("")
 	with c35:
 		st.write("")
-	output_file = open("output.txt",'w')
-	sec_file = open("out_file.txt",'w')
 	if select5  is True:
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 
 		                    'AP': 'Andhra Pradesh', 
@@ -327,9 +325,10 @@ def main():
 		                    'UP': 'Uttar Pradesh', 
 		                    'UT': 'Uttarakhand', 
 		                    'WB': 'West Bengal'}
-		
 		if select3=='Tesseract-Ocr' and type(Tesseract_HP) == int and len(features)==2:
 			value = 1
+			output_file = open("output.txt",'w')
+			sec_file = open("out_file.txt",'w')
 			for input_image in all_imgs:
 			    # Resizing the image
 			    Resized_image = imutils.resize(input_image, width=300 )
@@ -422,9 +421,12 @@ def main():
 			      sec_file.write(f"\nNumber plate:{string.strip()},state:{state.strip()}\n")
 
 			    value += 1
+			output_file.close()
+			sec_file.close()
 
 		elif select3 == 'Easy-Ocr' and type(Easy_HP)==float and len(features)==2:
-			
+				output_file = open("output.txt",'w')
+				sec_file = open('out_file.txt','w')
 				reader = easyocr.Reader(['en'])
 				value = 1
 				confidence_threshold = Easy_HP
@@ -465,7 +467,8 @@ def main():
 									break
 							except Exception as e:
 								pass
-
+				output_file.close()
+				sec_file.close()
 		else:
 			if select3 !=None:
 				#CE1,CE2,CE3 = st.columns((5,7,5))
@@ -485,8 +488,7 @@ def main():
 					st.write("")
 				with c35:
 					st.write("")
-	output_file.close()
-	sec_file.close()
+
 	output_file = open('output.txt','r')
 	
 	with c31:

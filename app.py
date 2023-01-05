@@ -8,21 +8,27 @@ import numpy as np
 import re
 import pandas as pd
 
+
 def main():
 	st.set_page_config(layout="wide")
 	global select2
 	global select3
 	global select4
 	global file_uploaded
-	output_file = open("output.txt",'w')
 	global slect5
 	global all_imgs
 	global dict_file
 	global features
 	global Tesseract_HP
 	global Easy_HP
-	global Display_PSM 
+	global Display_PSM
+	global select_preview
+	global value
+	global length 
 
+	length = 1
+	value = 1
+	select_preview = None
 	Display_PSM = None
 	Easy_HP = None
 	Tesseract_HP = None
@@ -32,8 +38,7 @@ def main():
 	select2 = None 
 	select3 = None
 	select4 = None
-	select5 = None
-	dict_file = {}
+	select5  = None
 
 	with open('style.css') as f:
 		st.markdown (f"<style>{f.read()}</style>",unsafe_allow_html=True)
@@ -276,14 +281,14 @@ def main():
 			st.write("")
 			st.write("")
 			st.write("")
-			select5 = st.button("Classify Licence Plates")
+			select5  = st.button("Classify Licence Plates")
 	with c31:
 		st.write("")
 	with c34:
 		st.write("")
 	with c35:
 		st.write("")
-	if select5 is True:
+	if select5  is True:
 		state_dictionary = {'AN': 'Andaman and Nicobar Islands', 
 		                    'AP': 'Andhra Pradesh', 
 		                    'AR': 'Arunachal Pradesh', 
@@ -323,6 +328,7 @@ def main():
 		if select3=='Tesseract-Ocr' and type(Tesseract_HP) == int and len(features)==2:
 			value = 1
 			output_file = open("output.txt",'w')
+			sec_file = open("out_file.txt",'w')
 			for input_image in all_imgs:
 			    # Resizing the image
 			    Resized_image = imutils.resize(input_image, width=300 )
@@ -392,7 +398,8 @@ def main():
 			          state = state_dictionary[string_list]
 			       except:
 			        state = 'UNKNOWN'
-			      output_file.write(f"\n{value} Number plate: {string}  state: {state}\n")
+			      output_file.write(f"\n{value} Number plate: {string.strip()}  state: {state.strip()}\n")
+			      sec_file.write(f"\nNumber plate:{string.strip()},state:{state.strip()}\n")
 			    elif filteredText != " ":
 			      string = filteredText.replace(" ","")
 			      string_list = string[:2]
@@ -410,11 +417,16 @@ def main():
 			        except:
 			          state = 'UNKNOWN'
 			      
-			      output_file.write(f"\n{value} Number plate: {string}  state: {state}\n")
+			      output_file.write(f"\n{value} Number plate: {string.strip()}  state: {state.strip()}\n")
+			      sec_file.write(f"\nNumber plate:{string.strip()},state:{state.strip()}\n")
+
 			    value += 1
 			output_file.close()
+			sec_file.close()
+
 		elif select3 == 'Easy-Ocr' and type(Easy_HP)==float and len(features)==2:
 				output_file = open("output.txt",'w')
+				sec_file = open('out_file.txt','w')
 				reader = easyocr.Reader(['en'])
 				value = 1
 				confidence_threshold = Easy_HP
@@ -441,17 +453,22 @@ def main():
 							try:
 								if state_text in  state_list:
 									state = state_dictionary[state_text]
-									output_file.write(f"\n{value} Number Plate:    {text}      state:  {state}\n")
+									output_file.write(f"\n{value} Number Plate:{text}		State:{state.strip()}\n")
+									sec_file.write(f"\nNumber plate:{text.strip()},State:{state}\n")
+
 									value += 1
 									break
 								else:
 									state = "UNKNOWN"
-									output_file.write(f"\n{value} Number Plate: {text}        state:  {state}\n")
+									output_file.write(f"\n{value} Number Plate: {text.strip()}		State:  {state.strip()}\n")
+									sec_file.write(f"\nNumber plate:{text.strip()},state:{state.strip()}\n")
+
 									value += 1
 									break
 							except Exception as e:
 								pass
 				output_file.close()
+				sec_file.close()
 		else:
 			if select3 !=None:
 				#CE1,CE2,CE3 = st.columns((5,7,5))
@@ -459,11 +476,11 @@ def main():
 					st.write("")
 				with c33:
 					st.write("")
-					if select5 is True and len(features) !=2:
+					if select5  is True and len(features) !=2:
 						st.error("Select the feature in Image Features")
-					if select5 is True and  select3 == 'Tesseract-Ocr' and type(Tesseract_HP)!= int :
+					if select5  is True and  select3 == 'Tesseract-Ocr' and type(Tesseract_HP)!= int :
 						st.error("Select HyperParameter value")
-					if select5 is True and select3 == 'Easy-Ocr'and (type(Easy_HP)!=float):
+					if select5  is True and select3 == 'Easy-Ocr'and (type(Easy_HP)!=float):
 						st.error("Select HyperParameter value")
 				with c32:
 					st.write("")
@@ -481,41 +498,76 @@ def main():
 	with c33:
 		st.write("")
 		st.write("")
-		if len(output_file.readline()) != 0 and select5 == True:
+		if len(output_file.readlines()) != 0 and select5  == True:
 			st.success("Model Executed Successfully")
-	with c34:
-		st.write("")
-	with c35:
-		st.write("")
-		
-	with c32:
+
+	output_file.close()
+
+	c41,c42,c43,c44,c45 = st.columns([0.25,1.5,2.75,0.25,1.75])
+	with c42:
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
-			st.write("")
 			st.markdown("#### **Model Outcome**")
-	with c33:
+	with c43:
 		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			#st.write("")
-			select5 = st.button("Preview Model Outcome")
-	with c31:
+			select_preview = st.button("Preview Model Outcome")
+	with c41:
 		st.write("")
-	with c34:
+	with c44:
 		st.write("")
-	with c35:
+	with c45:
 		st.write("")
+
+	sec_file = open('out_file.txt','r')
+	# co1,co2,co3 = st.columns((4,6,4))
+	with c41:
+		st.write("")
+	with c42:
+		st.write("")
+	with c43:
+		st.write("")
+		if len(file_uploaded)>1 and len(sec_file.readlines())!=0:
+			dataframe1 = pd.read_csv("out_file.txt")
+			dataframe1.to_csv('file.csv',index=None)
+		df = pd.read_csv('file.csv')
+		if df.shape[0]!=0:
+			length = df.shape[0]
+		if select_preview == True:
+			df = pd.read_csv('file.csv',names=["Licence  Number","State"])
+			st.table(df)
+	with c44:
+		st.write("")
+	with c45:
+		st.write("")
+	sec_file.close()
+
+
+
+	output_file = open('output.txt','r')
 	c61,c62,c63,c64 = st.columns([4,3,3,5])
 	with c61:
 		st.write("")
 	with c62:
 		st.write("")
 	with c63:
-		if len(file_uploaded)>=1:
+		if len(file_uploaded)>1 and output_file.readlines() is  not None:
+			output_file = open("output.txt",'r')
+			extra_file = open("extra.txt",'w')
+			extra_file.write(output_file.read())
+			extra_file.close()
+			output_file.close()
+
+
+		extra_file = open('extra.txt','r')
+		if len(file_uploaded)>=1 and length >1:
 			st.write("")
 			st.write("")
-			select6 = st.download_button("Download",output_file,file_name="OutPut.txt",mime='text')
+			select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
+		extra_file.close()
 	with c64:
 		st.write("")
 		

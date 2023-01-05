@@ -15,7 +15,7 @@ def main():
 	global select3
 	global select4
 	global file_uploaded
-	extra_file = open('extra.txt','w')
+	#extra_file = open('extra.txt','w')
 	global select5
 	global select6
 	global all_imgs
@@ -564,8 +564,9 @@ def main():
 		output_file.close()
 		extra_file.close()
 	with c63:
+		out_file.seek(0)
 		#extra_file = open("extra.txt",'r')
-		if len(file_uploaded)>=1:
+		if len(file_uploaded)>=1 and len(output_file.readlines())!=0:
 			extra_file = open('extra.txt','r')
 			st.write("")
 			st.write("")

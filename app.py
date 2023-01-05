@@ -44,7 +44,6 @@ def main():
 		st.markdown (f"<style>{f.read()}</style>",unsafe_allow_html=True)
 
 	def Reset_fun():
-		pass
 		st.session_state['key1']="Select the problem Statement"
 		st.session_state['key2']="Library Used"
 		st.session_state['key3']="Model Implemented"

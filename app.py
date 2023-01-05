@@ -562,8 +562,6 @@ def main():
 			extra_file.write(output_file.read())
 			output_file.close()
 	extra_file.close()
-		#if len(file_uploaded)>=1:
-			#select6 = True
 		extra_file = open("extra.txt",'r')
 		if len(file_uploaded)>=1 and len(extra_file.readlines())!=0 :
 			extra_file = open('extra.txt','r')

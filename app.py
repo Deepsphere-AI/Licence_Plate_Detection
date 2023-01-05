@@ -562,14 +562,14 @@ def main():
 			extra_file.write(output_file.read())
 			output_file.close()
 	extra_file.close()
-		extra_file = open("extra.txt",'r')
-		if len(file_uploaded)>=1 and len(extra_file.readlines())!=0 :
+		#extra_file = open("extra.txt",'r')
+		if len(file_uploaded)>=1:
 			extra_file = open('extra.txt','r')
 			st.write("")
 			st.write("")
 			select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
 			extra_file.close()
-		extra_file.close()
+		#extra_file.close()
 	with c64:
 		st.write("")
 

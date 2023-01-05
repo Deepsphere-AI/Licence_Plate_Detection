@@ -488,90 +488,90 @@ def main():
 					st.write("")
 				with c35:
 					st.write("")
+	if len(file_uploaded)>1:
+		output_file = open('output.txt','r')
 
-	output_file = open('output.txt','r')
-	
-	with c31:
-		st.write("")
-	with c32:
-		st.write("")
-	with c33:
-		st.write("")
-		st.write("")
-		if len(output_file.readlines()) != 0 and select5  == True:
-			st.success("Model Executed Successfully")
-
-	output_file.close()
-
-	c41,c42,c43,c44,c45 = st.columns([0.25,1.5,2.75,0.25,1.75])
-	with c42:
-		if len(file_uploaded)>=1:
+		with c31:
+			st.write("")
+		with c32:
+			st.write("")
+		with c33:
 			st.write("")
 			st.write("")
-			st.markdown("#### **Model Outcome**")
-	with c43:
-		if len(file_uploaded)>=1:
+			if len(output_file.readlines()) != 0 and select5  == True:
+				st.success("Model Executed Successfully")
+
+		output_file.close()
+
+		c41,c42,c43,c44,c45 = st.columns([0.25,1.5,2.75,0.25,1.75])
+		with c42:
+			if len(file_uploaded)>=1:
+				st.write("")
+				st.write("")
+				st.markdown("#### **Model Outcome**")
+		with c43:
+			if len(file_uploaded)>=1:
+				st.write("")
+				st.write("")
+				#st.write("")
+				select_preview = st.button("Preview Model Outcome")
+		with c41:
 			st.write("")
+		with c44:
 			st.write("")
-			#st.write("")
-			select_preview = st.button("Preview Model Outcome")
-	with c41:
-		st.write("")
-	with c44:
-		st.write("")
-	with c45:
-		st.write("")
+		with c45:
+			st.write("")
 
-	sec_file = open('out_file.txt','r')
-	# co1,co2,co3 = st.columns((4,6,4))
-	with c41:
-		st.write("")
-	with c42:
-		st.write("")
-	with c43:
-		st.write("")
-		if len(file_uploaded)>1 and len(sec_file.readlines())!=0:
-			dataframe1 = pd.read_csv("out_file.txt")
-			dataframe1.to_csv('file.csv',index=None)
-		df = pd.read_csv('file.csv')
-		if df.shape[0]!=0:
-			length = df.shape[0]
-		if select_preview == True:
-			df = pd.read_csv('file.csv',names=["Licence  Number","State"])
-			st.table(df)
-	with c44:
-		st.write("")
-	with c45:
-		st.write("")
-	sec_file.close()
+		sec_file = open('out_file.txt','r')
+		# co1,co2,co3 = st.columns((4,6,4))
+		with c41:
+			st.write("")
+		with c42:
+			st.write("")
+		with c43:
+			st.write("")
+			if len(file_uploaded)>1 and len(sec_file.readlines())!=0:
+				dataframe1 = pd.read_csv("out_file.txt")
+				dataframe1.to_csv('file.csv',index=None)
+			df = pd.read_csv('file.csv')
+			if df.shape[0]!=0:
+				length = df.shape[0]
+			if select_preview == True:
+				df = pd.read_csv('file.csv',names=["Licence  Number","State"])
+				st.table(df)
+		with c44:
+			st.write("")
+		with c45:
+			st.write("")
+		sec_file.close()
 
 
 
-	output_file = open('output.txt','r')
-	c61,c62,c63,c64 = st.columns([4,3,3,5])
-	with c61:
-		st.write("")
-	with c62:
-		st.write("")
-	with c63:
-		if len(file_uploaded)>1 and output_file.readlines() is  not None:
-			output_file = open("output.txt",'r')
-			extra_file = open("extra.txt",'w')
-			extra_file.write(output_file.read())
+		output_file = open('output.txt','r')
+		c61,c62,c63,c64 = st.columns([4,3,3,5])
+		with c61:
+			st.write("")
+		with c62:
+			st.write("")
+		with c63:
+			if len(file_uploaded)>1 and output_file.readlines() is  not None:
+				output_file = open("output.txt",'r')
+				extra_file = open("extra.txt",'w')
+				extra_file.write(output_file.read())
+				extra_file.close()
+				output_file.close()
+
+
+			extra_file = open('extra.txt','r')
+			if len(file_uploaded)>=1 and length >1:
+				st.write("")
+				st.write("")
+				select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
 			extra_file.close()
-			output_file.close()
-
-
-		extra_file = open('extra.txt','r')
-		if len(file_uploaded)>=1 and length >1:
+		with c64:
 			st.write("")
-			st.write("")
-			select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
-		extra_file.close()
-	with c64:
-		st.write("")
-		
-	output_file.close()
+
+		output_file.close()
 
 	
 	st.sidebar.selectbox("",['Library Used','Streamlit','Pandas','Opencv','Tesseract-Ocr','Easy-Ocr'],key='key2')

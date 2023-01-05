@@ -533,9 +533,9 @@ def main():
 		if len(file_uploaded)>1 and len(sec_file.readlines())!=0:
 			dataframe1 = pd.read_csv("out_file.txt")
 			dataframe1.to_csv('file.csv',index=None)
-		df = pd.read_csv('file.csv')
-		if df.shape[0]!=0:
-			length = df.shape[0]
+		#df = pd.read_csv('file.csv')
+		#if df.shape[0]!=0:
+		#	length = df.shape[0]
 		if select_preview == True:
 			df = pd.read_csv('file.csv',names=["Licence  Number","State"])
 			st.table(df)
@@ -554,7 +554,7 @@ def main():
 	with c62:
 		st.write("")
 	with c63:
-		if len(file_uploaded)>1 and output_file.readlines() is  not None:
+		if len(file_uploaded)>1 and len(output_file.readlines())!=0:
 			output_file = open("output.txt",'r')
 			extra_file = open("extra.txt",'w')
 			extra_file.write(output_file.read())
@@ -563,7 +563,7 @@ def main():
 
 
 		extra_file = open('extra.txt','r')
-		if len(file_uploaded)>=1 and length >1:
+		if len(file_uploaded)>=1:
 			st.write("")
 			st.write("")
 			select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')

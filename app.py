@@ -564,7 +564,7 @@ def main():
 		output_file.close()
 		extra_file.close()
 	with c63:
-		out_file.seek(0)
+		output_file.seek(0)
 		#extra_file = open("extra.txt",'r')
 		if len(file_uploaded)>=1 and len(output_file.readlines())!=0:
 			extra_file = open('extra.txt','r')

@@ -559,8 +559,7 @@ def main():
 			extra_file = open("extra.txt",'w')
 			extra_file.write(output_file.read())
 			extra_file.close()
-			output_file.close()
-			
+			output_file.close()	
 		if len(file_uploaded)>=1:
 			extra_file = open('extra.txt','r')
 			st.write("")

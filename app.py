@@ -565,12 +565,17 @@ def main():
 		extra_file.close()
 	with c63:
 		output_file = open("output.txt",'r')
-		if len(file_uploaded)>=1:
-			extra_file = open('extra.txt','r')
-			st.write("")
-			st.write("")
-			select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
-			extra_file.close()
+		try:
+			if len(file_uploaded)>=1:
+				extra_file = open('extra.txt','r')
+				st.write("")
+				st.write("")
+				select6 = st.download_button("Download",extra_file,file_name="OutPut.txt",mime='text')
+				extra_file.close()
+		except Exception as e:
+			pass
+			#extra_file = open('extra.txt','w')
+			#extra_file.close()
 		output_file.close()
 	with c64:
 		st.write("")
